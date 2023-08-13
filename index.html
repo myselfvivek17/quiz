@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <title>Document</title>
+    <style>
+      body {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      fieldset {
+        background-color: aliceblue;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        height: 300px;
+        justify-content: space-around;
+      }
+      input[type="number"] {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset class="border border-solid border-gray-300 p-3">
+        <legend class="text-lg">QUIZ</legend>
+        <select name="q" id="select">
+          <option value="9">General Knowledge</option>
+          <option value="10">Entertainment: Books</option>
+          <option value="11">Entertainment: Film</option>
+          <option value="12">Entertainment: Music</option>
+          <option value="14">Entertainment: Television</option>
+          <option value="15">Entertainment: Video games</option>
+          <option value="16">Entertainment: Board games</option>
+          <option value="17">Science & Nature</option>
+          <option value="18">Science: Computers Science</option>
+          <option value="30">Science: Gagets</option>
+          <option value="19">Science: Mathematics</option>
+          <option value="20">Mythology</option>
+          <option value="21">Sports</option>
+          <option value="22">Geography</option>
+          <option value="23">History</option>
+          <option value="25">Art</option>
+          <option value="24">Politics</option>
+          <option value="26">Celebrities</option>
+          <option value="27">Animals</option>
+          <option value="28">Vehicles</option>
+          <option value="29">Entertainment: Comics</option>
+          <option value="31">Entertainment: Japanese Anime & Manga</option>
+        </select>
+        <input
+          type="number"
+          id="num"
+          placeholder="Enter number of questions"
+          name="n"
+          value="1"
+        />
+        <button
+          type="submit"
+          onclick="go()"
+          class="submit rounded-full flex w-1/10 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Start Quiz
+        </button>
+      </fieldset>
+    </form>
+    <script>
+      function go() {
+        const q = document.querySelector("#select").value;
+        const n = document.querySelector("#num").value;
+        var link = `./quiz.html?q=${q}&n=${n}`;
+        window.open(link);
+      }
+    </script>
+  </body>
+</html>

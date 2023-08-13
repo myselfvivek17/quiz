@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QUIZ</title>
+  </head>
+  <body>
+    <div class="question-no">
+      <div class="text-xl text-center">Question Number</div>
+      <br />
+      <div
+        class="grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        id="qno"
+      ></div>
+    </div>
+    <div class="quiz">
+      <div class="time prose lg:prose-xl">
+        <b>
+          Time Left :
+          <span class="hrs">00</span>:<span class="min">00</span>:<span
+            class="sec"
+            >00</span
+          >
+        </b>
+      </div>
+      <div class="question">
+        <div id="loader">Loading...</div>
+        <span class="question-title"></span><br />
+        <br /><br />
+        <ul class="options"></ul>
+        <br />
+        <span
+          class="checker"
+          style="
+            width: 100%;
+            display: block;
+            font-size: medium;
+            border-radius: 5px;
+          "
+        ></span
+        ><br />
+        <button
+          type="submit"
+          class="submit rounded-full flex w-1/10 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Submit</button
+        ><br />
+        <button
+          type="submit"
+          class="submitTest rounded-full flex w-1/6 justify-center rounded-md bg-green-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Submit Test
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

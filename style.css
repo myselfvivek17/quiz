@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    display: flex;
+}
+
+.question-no {
+    margin: 7px;
+    width: 20%;
+    height: 98vh;
+    background-color: rgb(211, 211, 211);
+    padding: 2%;
+    overflow-y: auto;
+}
+
+.quiz {
+    width: 100%;
+}
+
+.time {
+    height: 50px;
+    /* width: 100%; */
+}
+
+.question {
+    background-color: aliceblue;
+    height: max-content;
+    padding: 3%;
+    margin-right: 1%;
+}
+
+ul {
+    list-style-type: none;
+}
