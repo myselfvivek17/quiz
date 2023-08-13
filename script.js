@@ -91,8 +91,10 @@ btn.forEach(function (button) {
 submitButton.addEventListener("click", function () {
   const selectedAns = document.querySelector('input[type="radio"]:checked');
   const ans = quizQuestions.results[idx].correct_answer;
+  console.log(ans);
+  console.log(selectedAns.nextElementSibling.innerHTML.trim());
   if (selectedAns != null) {
-    if (ans == selectedAns.nextElementSibling.innerHTML) {
+    if (ans == selectedAns.nextElementSibling.innerHTML.trim()) {
       checker.innerHTML = `Correct`;
       checker.style.backgroundColor = "#eaf1eb";
       checker.style.color = "#63a76a";
@@ -159,7 +161,6 @@ const hrs = document.querySelector(".hrs");
 const min = document.querySelector(".min");
 const sec = document.querySelector(".sec");
 let { h, m, s } = calculateTime(number);
-console.log(`h: ${h} m: ${m} s: ${s} number: ${number}`);
 s = 59;
 m = m - 1;
 function startTimer() {
