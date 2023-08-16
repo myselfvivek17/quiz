@@ -5,6 +5,7 @@ const submitTest = document.querySelector(".submitTest");
 const checker = document.querySelector(".checker");
 const numberQuestion = document.querySelector("#qno");
 let cat = 9;
+let clickerBtn;
 let number = 1;
 const urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get("n") > 0) {
@@ -58,7 +59,8 @@ async function content() {
             >`;
     options.appendChild(li);
   }
-  btn[0].parentElement.style.backgroundColor = "green";
+  clickerBtn = btn[0];
+  btn[0].parentElement.style.backgroundColor = "pink";
   loader.style.display = "none"; // Hide the loader
 }
 
@@ -67,6 +69,12 @@ setInterval(startTimer, 1000);
 btn.forEach(function (button) {
   button.addEventListener("click", () => {
     //checkbox enabled
+    clickerBtn = button;
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    for (var i = 0; i < radioButtons.length; i++) {
+      radioButtons[i].disabled = false;
+    }
     submitButton.disabled = false;
     checker.innerHTML = ``;
     checker.style.backgroundColor = "none";
@@ -84,28 +92,34 @@ btn.forEach(function (button) {
             >`;
       options.appendChild(li);
     }
-    button.parentElement.style.backgroundColor = "green";
+    button.parentElement.style.backgroundColor = "pink";
     // button.disabled = true;
   });
 });
 submitButton.addEventListener("click", function () {
   const selectedAns = document.querySelector('input[type="radio"]:checked');
   const ans = quizQuestions.results[idx].correct_answer;
-  console.log(ans);
-  console.log(selectedAns.nextElementSibling.innerHTML.trim());
   if (selectedAns != null) {
     if (ans == selectedAns.nextElementSibling.innerHTML.trim()) {
       checker.innerHTML = `Correct`;
       checker.style.backgroundColor = "#eaf1eb";
       checker.style.color = "#63a76a";
+      clickerBtn.parentElement.style.backgroundColor = "green";
       result++;
     } else {
-      checker.innerHTML = `Wrong`;
+      checker.innerHTML = `Wrong<br>
+      Correct answer is "${ans}"`;
       checker.style.backgroundColor = "#f7eaea";
       checker.style.color = "#d83735";
+      clickerBtn.parentElement.style.backgroundColor = "red";
     }
     checker.style.padding = "0.5%";
     //checkbox disable
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    for (var i = 0; i < radioButtons.length; i++) {
+      radioButtons[i].disabled = true;
+    }
     submitButton.disabled = true;
     btn[idx].disabled = true;
     numberOfAttempted++;
@@ -148,7 +162,7 @@ function drawChart() {
       "inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20"
     );
   } else {
-    resTxt.innerHTML = "FAILED TRY AGAINST";
+    resTxt.innerHTML = "FAILED";
     resTxt.setAttribute(
       "class",
       "inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10"
